@@ -913,6 +913,11 @@ void _glfwPlatformSetWindowSize(_GLFWwindow* window, int width, int height)
         XResizeWindow(_glfw.x11.display, window->x11.handle, width, height);
 }
 
+void _glfwPlatformSetWindowIcons(_GLFWwindow* window, GLFWimage *icons, int numicons)
+{
+    /* TODO: implement this */
+}
+
 void _glfwPlatformIconifyWindow(_GLFWwindow* window)
 {
     if (window->x11.overrideRedirect)

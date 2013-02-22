@@ -829,6 +829,11 @@ void _glfwPlatformSetWindowSize(_GLFWwindow* window, int width, int height)
     [window->ns.object setContentSize:NSMakeSize(width, height)];
 }
 
+void _glfwPlatformSetWindowIcons(_GLFWwindow* window, GLFWimage *icons, int numicons)
+{
+    /* TODO: implement this */
+}
+
 void _glfwPlatformIconifyWindow(_GLFWwindow* window)
 {
     [window->ns.object miniaturize:nil];

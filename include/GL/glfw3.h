@@ -705,6 +705,19 @@ typedef void (* GLFWcharfun)(GLFWwindow*,int);
  */
 typedef void (* GLFWmonitorfun)(GLFWmonitor*,int);
 
+
+/* @brief Raw image data.
+ * @note The data member must point to width * height * 4 bytes of 8bits RGBA data, bottom to top, left to right.
+ * @ingroup window
+ */
+typedef struct
+{
+    unsigned char *data;
+    int width;
+    int height;
+} GLFWimage;
+
+
 /* @brief Video mode type.
  * @ingroup monitor
  */
@@ -1198,6 +1211,24 @@ GLFWAPI void glfwGetWindowSize(GLFWwindow* window, int* width, int* height);
  *  @sa glfwGetWindowSize
  */
 GLFWAPI void glfwSetWindowSize(GLFWwindow* window, int width, int height);
+
+/*! @brief Sets the application icons to use for the given window.
+ *  @param[in] window The window to set the icons for.
+ *  @param[in] icons A pointer to the first element of an array of GLFWimage structs.
+ *  @param[in] numicons The number of icons in the given array.
+ *  @ingroup window
+ *
+ *  @note This function may only be called from the main thread.
+ *
+ *  @note From all the given icons GLFW will automatically pick the most appropriate
+ *  size for the different locations in which the application icon can occur. For
+ *  example on Windows, if a larger and a smaller icon are given the larger icon
+ *  will be used for the ALT-TAB screen and the smaller for the taskbar.
+ *
+ *  @note If the icon does not exactly fit the operating systems requirements for the
+ *  icon size the icon will be automatically resized.
+ */
+GLFWAPI void glfwSetWindowIcons(GLFWwindow* window, GLFWimage* icons, int numicons);
 
 /*! @brief Iconifies the specified window.
  *  @param[in] window The window to iconify.
